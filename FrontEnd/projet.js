@@ -80,4 +80,75 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // deuxieme partie login => login.html et login.js
 
+    // troisieme partie mode edition, admin
+
+    function isconnected() {
+        const mytoken = localStorage.getItem("token");
+        if (mytoken === null) { 
+            return false
+        } else {
+            return true
+        };
+    
+    };
+
+    function borderTop() {
+        const banner = document.querySelector(".edit_mode"); 
+    
+        const iconeElement = document.createElement("i");
+        const textElement = document.createElement("p");
+    
+        console.log(banner, iconeElement, textElement);
+    
+        iconeElement.classList.add("fa-regular", "fa-pen-to-square");
+        iconeElement.classList.add("mode-edition", "i");
+        textElement.innerText = "Mode édition";
+        textElement.classList.add("mode-edition", "p");
+    
+        banner.appendChild(iconeElement);
+        banner.appendChild(textElement);
+    
+        const loginLink = document.querySelector(".loginL"); 
+        
+
+        const mytitle = document.querySelector(".divprojets");
+        console.log(mytitle);
+        const mytitlediv = document.createElement("div");
+        mytitlediv.classList.add(".divprojetsdiv");
+        const mytitleicone = document.createElement('i');
+        mytitleicone.classList.add("fa-regular", "fa-pen-to-square");
+        const mytitleelemment = document.createElement("p");
+        mytitleelemment.innerText = "modifier"
+       
+
+        mytitle.appendChild(mytitlediv);
+        mytitlediv.appendChild(mytitleicone);
+        mytitlediv.appendChild(mytitleelemment);
+        
+    
+       
+    
+        if (isconnected()) {
+
+            banner.style.display = "flex";
+            iconeElement.style.display = "flex";
+            mytitlediv.style.display = "flex"
+           
+            loginLink.innerText = "logout"
+            filters.style.display = "none";
+
+        } else {
+            banner.style.display = "none";
+            iconeElement.style.display = "none";
+            mytitleelemment.style.display = "none"
+            mytitleicone.style.display = "none"
+    
+            if (loginLink) loginLink.style.display = "block";
+            
+        }; 
+    
+    };
+    
+    borderTop(); // Call myBannerOn function after DOMContentLoaded  
+
 });
