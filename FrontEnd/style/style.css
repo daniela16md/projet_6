@@ -22,6 +22,11 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	text-decoration: none;
+	color: black;
+	&:hover {
+		color: #B1663C;
+	}
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -94,6 +99,14 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
+nav a {
+	text-decoration: none;
+	color: #000;
+	&:hover{
+		color: #000;
+		font-weight: 700;
+	}
+}
 
 li:hover {
 	color: #B1663C;
@@ -125,6 +138,9 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+#portofolio {
+	position: relative;
+}
 .gallery {
 	width: 100%;
 	display: grid;
@@ -139,7 +155,7 @@ li:hover {
 }
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -185,4 +201,38 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+/*****filters*****/
+.filters {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
+.button {
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+	background-color: white;
+	cursor: pointer;
+	height: 38px;
+	font-family: "Syne";
+	padding: 8px 15px;
+	font-size: 16px;
+	font-weight: 700;
+}
+.button_selected {
+	background-color: #1D6154;
+	color: white;
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+	cursor: pointer;
+	height: 38px;
+	font-family: "Syne";
+	padding: 8px 15px;
+	font-size: 16px;
+	font-weight: 700;
+}
+
 
