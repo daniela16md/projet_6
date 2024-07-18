@@ -236,8 +236,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 await deleteW(workId);
                 figureEL.remove();
             });
-            affichageBoutonMove(imageM1,IM1button,btnDelete);
-            previsuSupprimer(btnDelete, imageM1,figureEL,works);
+          
         });
     };
 
@@ -285,51 +284,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         };
     };
 
-    function affichageBoutonMove (imageM1,IM1button,btnDelete) {
-
-
-        const zoneImage = [imageM1, IM1button, btnDelete]
-
-        zoneImage.forEach(function(elem){
-
-            elem.addEventListener("mouseenter", function(){
-                
-            
-                IM1button.style.display = "block"
-            });
-        });
-
-
-
-        imageM1.addEventListener("mouseout", function(){
-                
-               IM1button.style.display = "none"
-            
     
-        });
-    };
-
-    function previsuSupprimer (IM1button, imageM1, figureEL , works) {
-
-        IM1button.addEventListener("click", function(){
-        
-        
-            const demandeSuppr = confirm("Voulez-vous supprimer cette image ? Cette opération n'est pas définitive, appuyer sur publier les changements pour confirmer vos suppressions.")
-        
-            if (demandeSuppr === true) {
-        
-            comparatifSuppr.push(imageM1.getAttribute("data-idimage"))
-        
-            console.log(comparatifSuppr)
-            
-        
-            figureEL.style.display = "none"
-            document.querySelector(".gallery").innerHTML = ""
-            genererImages(works)
-            }
-        
-        })
-    };
 
 
     // Method Post 
