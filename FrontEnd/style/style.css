@@ -375,9 +375,217 @@ gap: 20px;
 }
 
 .divprojetsdiv {
-	animation-timing-function: ease-out;
-	animation-duration: 300ms;
+	display: flex;
 }
 
 /*****Modal*****/
+/*header, footer, #portofolio, #introduction, #contact {
+	z-index: 1;
+} */
 
+.backgroundmodal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+
+#modal {
+	background-color: white;
+	width: 630px;
+	max-width: calc(100vw - 20px);
+	max-height: calc(100vh - 20px);
+	overflow: auto;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	box-sizing: border-box;
+	border-radius: 10px;
+	top: 10%;
+}
+.modalarrowX {
+	display: flex;
+	justify-content: space-between;
+	gap: 60px;
+}
+.fa-arrow-left {
+	font-size: 20px;
+	text-align: left;
+	cursor: pointer;
+	width: 16px;
+	position: absolute;
+	top: 30px;
+	left: 36px;
+	
+}
+.fa-xmark {
+	position: absolute;
+	top: 30px;
+	right: 36px;
+	text-align: right;
+	font-size: 20px;
+	width: 16px;
+	cursor: pointer;
+	
+}
+.modalcontent,
+.modalcontent2{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+	margin-top: 20px;
+	gap: 20px;
+}
+.modaltitle{
+	align-self: center;
+	font-size: 26px;
+}
+.borderbottom{
+	display: flex;
+	border: 1px solid black;
+	width: 80%;
+	align-self: center;
+}
+.buttonmodal{
+	align-self: center;
+	width: 40%;
+	border-radius: 20px;
+	background-color: #1D6154;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	padding: 5px;
+	border: none;
+}
+.buttonmodalgrey{
+	align-self: center;
+	width: 40%;
+	border-radius: 20px;
+	background-color: #A7A7A7;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	padding: 5px;
+	border: none;
+}
+.modalgallery{
+	padding: 0 54px;
+    width: 80%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    gap: 8px;
+}
+.modalgallery img {
+	height: 100px;
+	object-fit: cover;
+	width: 100%;
+	
+}
+.workmodal {
+	display: flex;
+}
+.noshow{
+	font-size: 0px;
+}
+.fa-trash-can {
+	color: white;
+	background-color: black;
+	width: 17px;
+	height: 17px;
+	position: absolute;
+	padding:5px;
+	top:2px;
+	right:2px;
+	cursor: pointer;
+}
+.divimagetrash{
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.modalform {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 36px;
+}
+.divform{
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	height: 170px;
+	width: 80%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+.formbutton{
+	height: 36px;
+	width: 173px;
+	text-align: center;
+	background-color: #CBD6DC;
+	color: #306685;
+	font-size: 14px;
+	border-radius: 50px;
+	border: none;
+	cursor: pointer;
+}
+.inputform{
+	opacity: 0;
+	position: absolute;
+	bottom: 40px;
+	cursor: pointer;
+	height: 36px;
+}
+.fa-image {
+	margin: 20px;
+	font-size: 56px;
+	color: rgb(189, 187, 187);
+	background-color: #E8F1F6;
+}
+#photoPreview {
+	position: absolute;
+	height: 170px;
+}
+.formtext{
+	font-size: 10px;
+	margin-top: 5px;
+}
+.divtitre{
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	gap: 15px;
+    justify-content: center;
+    align-self: center;
+}
+#Titre,
+#category{
+	width: 100%;
+	box-sizing: border-box;
+	height: 50px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	padding-left: 20px;
+}
+
+#modalId1,
+#modalId2 {
+	display: flex;
+}
+.hide{
+	display: none;
+}
+.displayflex{
+	display: flex;
+}
