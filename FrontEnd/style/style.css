@@ -476,6 +476,9 @@ gap: 20px;
 	padding: 5px;
 	border: none;
 }
+.buttongreen {
+	background-color: #1D6154;
+}
 .modalgallery{
 	padding: 0 54px;
     width: 80%;
