@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const gallery = document.querySelector(".gallery");
     const filters = document.querySelector(".filters");
 
-    
+
     async function getMyWorks() {
         const response = await fetch("http://localhost:5678/api/works");
         return await response.json();
@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     /***** verifier si le token est tujours active dans la function isconnected */
 
+
     function isconnected() {
         const mytoken = localStorage.getItem("token");
         console.log(mytoken);
@@ -116,7 +117,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         
         return JSON.parse(jsonPayload);
     }
-    
    
     const connectionStatus = isconnected();
     console.log("Connection Status:", connectionStatus);
@@ -124,14 +124,12 @@ document.addEventListener("DOMContentLoaded", async function() {
         console.log(connectionStatus.message);
     } else {
         console.error(connectionStatus.message);
-        
     }
    
     /***** le banner */
 
     function borderTop() {
         const banner = document.querySelector(".edit_mode"); 
-    
         const iconeElement = document.createElement("i");
         const textElement = document.createElement("p");
     
@@ -147,7 +145,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     
         const loginLink = document.querySelector(".loginL"); 
         
-
         const mytitle = document.querySelector(".divprojets");
         console.log(mytitle);
         const mytitlediv = document.createElement("div");
@@ -156,34 +153,38 @@ document.addEventListener("DOMContentLoaded", async function() {
         mytitleicone.classList.add("fa-regular", "fa-pen-to-square");
         const mytitleelemment = document.createElement("p");
         mytitleelemment.innerText = "modifier"
+        const logoutLink = document.querySelector(".logoutL");
        
-
         mytitle.appendChild(mytitlediv);
         mytitlediv.appendChild(mytitleicone);
         mytitlediv.appendChild(mytitleelemment); 
     
-        if (isconnected()) {
+        if (isconnected().isValid) {
 
             banner.style.display = "flex";
             iconeElement.style.display = "flex";
             mytitlediv.style.display = "flex"
            
-            loginLink.innerText = "logout"
+            loginLink.style.display = "none";
+            logoutLink.classList.remove("hide");
+            logoutLink.addEventListener("click", ()=>{
+                if(logoutLink){ 
+                localStorage.removeItem("token");
+                location.reload();
+                window.location.href = "index.html";
+                }
+            })
             filters.style.display = "none";
 
         } else {
             banner.style.display = "none";
             iconeElement.style.display = "none";
-            mytitleelemment.style.display = "none"
-            mytitleicone.style.display = "none"
-    
-            if (loginLink) loginLink.style.display = "block";
-            
+            mytitleelemment.style.display = "none";
+            mytitleicone.style.display = "none";
         }; 
-    
     };
-    
-    borderTop();  
+    borderTop();
+  
 
 
     // Quatrieme partie Modal
@@ -213,7 +214,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     function closeModal() {
         if (mymodal) {
-            mymodal.style.display = 'none'; // Cacher la modal
+            mymodal.style.display = 'none'; 
             console.log("Modal closed.");
         }
     }
@@ -238,7 +239,7 @@ document.addEventListener("DOMContentLoaded", async function() {
    
     async function createMyModal() {
         const modal = document.getElementById("modal");
-        modal.innerHTML = ''; // Nettoyer le contenu de la modal
+        modal.innerHTML = ''; 
 
         // Création des éléments de la modal
         const arrowElement = document.createElement("i");
@@ -281,7 +282,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     async function newView() {
         const modalcontent = document.querySelector(".modalcontent");
         if (modalcontent) {
-            modalcontent.remove(); // Supprimez la vue actuelle
+            modalcontent.remove(); 
         }
 
         const modal1 = document.getElementById("modal");
@@ -312,7 +313,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         const formbutton = document.createElement("button");
         formbutton.innerText = "+ Ajouter photo";
         formbutton.classList.add("formbutton");
-        formbutton.type = "button"; // Assurez-vous que ce bouton n'est pas de type submit
+        formbutton.type = "button"; 
         divform.appendChild(formbutton);
 
         const inputform = document.createElement("input");

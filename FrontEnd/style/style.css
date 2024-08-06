@@ -291,6 +291,15 @@ footer nav ul {
 }
 .error-message {
 	color: red;
+	display: flex;
+	justify-content: center;
+	margin-left: 25%;
+	margin-top: 20px;
+	box-sizing: border-box;
+	border-radius: 20px;
+	width: 45%;
+	padding: 10px;
+	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 /*****mode edition/ banner *****/
 
@@ -356,9 +365,9 @@ a {
 }
 
 .divprojets {
-display: flex;
-justify-content: center;
-gap: 20px;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
 }
 
 .divprojets i {
@@ -377,6 +386,7 @@ gap: 20px;
 .divprojetsdiv {
 	display: flex;
 }
+
 
 /*****Modal*****/
 /*header, footer, #portofolio, #introduction, #contact {
