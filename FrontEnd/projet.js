@@ -3,15 +3,12 @@ document.addEventListener("DOMContentLoaded", async function() {
     const gallery = document.querySelector(".gallery");
     const filters = document.querySelector(".filters");
 
-
     async function getMyWorks() {
         const response = await fetch("http://localhost:5678/api/works");
         return await response.json();
     }
     const showallmyworks = getMyWorks();
     console.log(showallmyworks);
-
-
     
     async function getMyCategories() {
         const response = await fetch("http://localhost:5678/api/categories");
@@ -23,19 +20,15 @@ document.addEventListener("DOMContentLoaded", async function() {
        
         gallery.innerHTML = "";
         
-       
         arrayApiWorks.forEach(work=> {
            
             const figureEL = document.createElement("figure");
             const imgEL = document.createElement("img");
             const figcaption = document.createElement("figcaption");
-
             imgEL.src = work.imageUrl;
             figcaption.textContent = work.title;
-
             figureEL.appendChild(imgEL);
             figureEL.appendChild(figcaption);
-
             gallery.appendChild(figureEL);
         });
     }
@@ -43,15 +36,12 @@ document.addEventListener("DOMContentLoaded", async function() {
     function createButton(name, categoryId) {
         const button = document.createElement("button");
         button.classList.add("button");
-
         button.innerText = name;
-
         filters.appendChild(button);
 
         button.addEventListener("click", async () => {
             document.querySelectorAll(".filters button").forEach(btn => btn.classList.remove("button_selected"));
             button.classList.add("button_selected");
-
             console.log(categoryId);
 
             const works = await getMyWorks();
@@ -65,7 +55,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     /***** afficher les filtres */
     async function displayFilters() {
         createButton("Tous", undefined);
-
         document.querySelector(".filters button").classList.add("button_selected");
 
         const categories = await getMyCategories();
@@ -118,14 +107,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         return JSON.parse(jsonPayload);
     }
    
-    const connectionStatus = isconnected();
-    console.log("Connection Status:", connectionStatus);
-    if (connectionStatus.isValid) {
-        console.log(connectionStatus.message);
-    } else {
-        console.error(connectionStatus.message);
-    }
-   
+    
     /***** le banner */
 
     function borderTop() {
@@ -158,6 +140,9 @@ document.addEventListener("DOMContentLoaded", async function() {
         mytitle.appendChild(mytitlediv);
         mytitlediv.appendChild(mytitleicone);
         mytitlediv.appendChild(mytitleelemment); 
+        banner.style.display = "none";
+        iconeElement.style.display = "none";
+        mytitlediv.style.display = "none";
     
         if (isconnected().isValid) {
 
@@ -168,19 +153,16 @@ document.addEventListener("DOMContentLoaded", async function() {
             loginLink.style.display = "none";
             logoutLink.classList.remove("hide");
             logoutLink.addEventListener("click", ()=>{
-                if(logoutLink){ 
                 localStorage.removeItem("token");
                 location.reload();
                 window.location.href = "index.html";
-                }
             })
             filters.style.display = "none";
 
-        } else {
-            banner.style.display = "none";
-            iconeElement.style.display = "none";
-            mytitleelemment.style.display = "none";
-            mytitleicone.style.display = "none";
+        } else if(localStorage.getItem("token")){
+            localStorage.removeItem("token");
+            location.reload();
+            window.location.href = "index.html";
         }; 
     };
     borderTop();
@@ -241,7 +223,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         const modal = document.getElementById("modal");
         modal.innerHTML = ''; 
 
-        // Création des éléments de la modal
         const arrowElement = document.createElement("i");
         arrowElement.classList.add("fa-solid", "fa-arrow-left", "hide");
         arrowElement.addEventListener("click", backView);
@@ -278,7 +259,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         const works = await getMyWorks();
         showWorksModal(works);
     }
-
+    /***** le deuxieme contenu de ma modal */
     async function newView() {
         const modalcontent = document.querySelector(".modalcontent");
         if (modalcontent) {
@@ -325,6 +306,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         const photoPreview = document.createElement("img");
         photoPreview.id = "photoPreview";
         divform.appendChild(photoPreview);
+        
 
         inputform.addEventListener("change", () => {
             const [file] = inputform.files;
@@ -388,7 +370,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         selectCategory.addEventListener("change", validation);
 
         function validation() {
-            if (inputform.value !== "" && inputtitre.value !== "" && selectCategory.value !== "0") {
+            if (inputform.value !== "" && inputtitre.value !== "" && selectCategory.value !== "") {
                 buttonModal2.classList.add("buttongreen");
             } else {
                 buttonModal2.classList.remove("buttongreen");
@@ -476,6 +458,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             const response = await fetch('http://localhost:5678/api/works', {
                 method: "POST",
                 headers: {
+                    "accept": "application/json",
                     "Authorization": `Bearer ${token}`,
                 },
                 body: formData
